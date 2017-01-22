@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl" ng-init="names = ['Matthias', 'Yenthe', 'Dieter']" name="myForm">
+  {{ firstName + " " + lastName }}
+
+  <ul>
+    <li ng-repeat="x in names"> {{ x }} </li>
+  </ul>
+
+  <matthias-test-directive></matthias-test-directive>
+
+  <input type="email" name="myAddress" ng-model="text" />
+  <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+
+</div>
+
+<script src="myApp.js"></script>
+<script src="myCtrl.js"></script>
+
+
+
+<!--<div ng-app="myApp2" ng-controller="myCtrl" ng-init="person={name:'Matthias',lastName:'Andriessen'}">
+  <p>Name : <input type="text" ng-model="name"></p>
+  <h1>Hello {{person.name + " " + person.lastName}}</h1>
+
+  <p ng-bind="name"></p>
+
+  <p>{{ 50 * 2}}</p>
+
+
+</div>
+
+<div ng-app="myApp2" matthias-directive></div>
+
+
+<script>
+/*var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope){
+  $scope.name = "Matthias"
+});
+
+var app2 = angular.module("myApp2", []);
+app2.directive("matthiasDirective", function() {
+  return {
+    template : "Ik ben in een directive intstructor gemaakt. Geen idee wat dit is..."
+  };
+});
+*/
+</script>-->
+
+</body>
+</html>
