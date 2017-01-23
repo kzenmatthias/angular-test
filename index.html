@@ -3,17 +3,29 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <body>
 
-<div ng-app="myApp" ng-controller="myCtrl" ng-init="names = ['Matthias', 'Yenthe', 'Dieter']" name="myForm">
+<div ng-app="myApp" ng-controller="myCtrl" ng-init="names = ['Matthias', 'Yenthe', 'Dieter']">
   {{ firstName + " " + lastName }}
 
+  <p><input type="text" ng-model="filterword" /></p>
+
   <ul>
-    <li ng-repeat="x in names"> {{ x }} </li>
+    <li ng-repeat="x in names | filter : filterword"> {{ x | myFilter }} </li>
   </ul>
 
-  <matthias-test-directive></matthias-test-directive>
+  <matthias-test-directive ng-click="changeContent()"></matthias-test-directive>
 
-  <input type="email" name="myAddress" ng-model="text" />
-  <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+  <form name="myForm">
+    <input type="email" name="myMail" ng-model="text" />
+    <span ng-show="myForm.myMail.$error.email">Geen geldig e-mailadres</span>
+  </form>
+
+  <ul>
+    <li ng-repeat="x in data | filter: filterword">
+      {{ x.Name }}
+    </li>
+  </ul>
+
+  <select ng-model="selectedName" ng-options="x.Name for x in data"></select>
 
 </div>
 
